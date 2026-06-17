@@ -106,6 +106,8 @@ Architekturentscheidungen sind als Architecture Decision Records (ADR) dokumenti
 
 ## Qualitätsanforderungen
 
+Die vollständigen Qualitätsszenarien sind in [docs/architektur/qualitätsanforderungen.md](../architektur/qualitätsanforderungen.md) dokumentiert.
+
 Diese Qualitätsszenarien definieren die wesentlichen Qualitätsmerkmale des Calvin-Systems.
 
 ### Qualitätsbaum

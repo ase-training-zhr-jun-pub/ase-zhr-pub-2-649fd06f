@@ -33,8 +33,15 @@ const MIME = {
 const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url, "http://localhost")
+    // Falls der Proxy-Prefix (…/proxy/<port>/) nicht vom Proxy gestrippt wurde,
+    // hier abschneiden — so funktioniert der Build sowohl hinter dem Proxy als
+    // auch direkt über localhost.
+    let pathname = decodeURIComponent(url.pathname).replace(
+      /^.*\/proxy\/\d+\//,
+      "/",
+    )
     // Pfad relativ auflösen und Directory-Traversal verhindern.
-    let rel = decodeURIComponent(url.pathname).replace(/^\/+/, "")
+    let rel = pathname.replace(/^\/+/, "")
     if (rel === "") rel = "index.html"
     const filePath = normalize(join(DIST, rel))
     if (!filePath.startsWith(DIST)) {
