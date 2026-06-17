@@ -62,7 +62,7 @@ GL --> Calvin : Sieht Reports
 
 ### Ebene 1: Whitebox Gesamtsystem
 
-Das Calvin-System besteht aus einer Single Page Application (SPA) und einem separaten Booking Service. Diese Architektur wurde für die Prototyping-Phase optimiert und ermöglicht eine klare Trennung zwischen Benutzeroberfläche und Geschäftslogik.
+Das Calvin-System besteht aus einer Single Page Application (SPA) und einem Booking Service. Die SPA enthält neben der Benutzeroberfläche auch die Stammdaten (Standorte, Räume, Ausstattungen) als Mock-Daten. Authentifizierung erfolgt im Prototyp über Basic Auth ohne Passwörter.
 
 ```plantuml
 @startuml
@@ -74,13 +74,16 @@ actor "Consultant" as consultant
 actor "Geschäftsleitung" as gl
 
 package "Calvin System" {
-    component "SPA\n(Single Page Application)" as spa
+    package "SPA (Single Page Application)" as spa {
+        component "UI" as ui
+        component "Mock-Daten\n(Standorte, Räume,\nAusstattungen)" as mock
+    }
     component "Booking Service" as booking
 }
 
-consultant --> spa : Bucht Räume &\nArbeitsplätze
-gl --> spa : Sieht Reports
-spa --> booking : REST API\n(JSON)
+consultant --> ui : Bucht Räume &\nArbeitsplätze
+gl --> ui : Sieht Reports
+ui --> booking : REST API\n(JSON, Basic Auth)
 
 @enduml
 ```
@@ -90,17 +93,24 @@ spa --> booking : REST API\n(JSON)
 | Baustein | Verantwortlichkeit | Quellcode |
 |----------|-------------------|-----------|
 | **SPA** | Benutzeroberfläche für Buchungen, Kalenderansichten und Reports | `frontend/` |
-| **Booking Service** | Buchungslogik, Validierung, Konfliktprüfung, Auswertungsdaten | `backend/` |
+| **Mock-Daten (in SPA)** | Stammdaten für Standorte, Räume und Ausstattungen (Resource Service als statische Daten) | `frontend/src/lib/mock-data.ts` |
+| **Booking Service** | Buchungslogik, Validierung, Konfliktprüfung; arbeitet nur mit IDs aus den Mock-Daten | `backend/` |
 
 ### Schnittstelle: SPA → Booking Service
 
-Die SPA kommuniziert mit dem Booking Service über eine REST API (JSON über HTTPS). Die API-Spezifikation wird als OpenAPI-Dokument im Backend gepflegt.
+Die SPA kommuniziert mit dem Booking Service über eine REST API (JSON über HTTPS). Authentifizierung erfolgt im Prototyp über Basic Auth ohne Passwortprüfung (Nutzername im Header). Die API-Spezifikation wird als OpenAPI-Dokument im Backend gepflegt.
 
 ---
 
 ## Architekturentscheidungen
 
-Architekturentscheidungen sind als Architecture Decision Records (ADR) dokumentiert. Die ADRs findest du unter `docs/arc42/adrs/`.
+Architekturentscheidungen sind als Architecture Decision Records (ADR) dokumentiert. Die ADRs findest du unter `docs/architektur/adrs/`.
+
+| ADR | Entscheidung |
+|-----|-------------|
+| [ADR-001](../architektur/adrs/ADR-001-technologie-stack-fuer-booking-service.md) | ASP.NET Core (C#) als Technologie-Stack für den Booking Service |
+| [ADR-002](../architektur/adrs/ADR-002-resource-service-in-spa-integriert.md) | Resource Service in die SPA integriert (Mock-Daten) |
+| [ADR-003](../architektur/adrs/ADR-003-basic-auth-statt-okta-fuer-prototyp.md) | Basic Auth ohne Passwörter statt Okta für den Prototyp |
 
 ---
 

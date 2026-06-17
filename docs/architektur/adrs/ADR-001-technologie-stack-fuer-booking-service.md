@@ -8,8 +8,8 @@ Der Booking Service wird als eigenständiger Backend-Service implementiert, der 
 
 - REST API als Kommunikationsschnittstelle zur SPA
 - Kompatibilität mit einer dateibasierten Datenbank (z. B. SQLite) für einfaches lokales Setup
-- Perspektivisch: Okta-Integration für Authentifizierung und Autorisierung
 - Schnelle Entwicklung — der Service soll zeitnah implementiert werden
+- Perspektivisch (Produktivbetrieb): Okta-Integration für Authentifizierung und Autorisierung
 
 Drei Technologien wurden verglichen: **ASP.NET Core (C#)**, **Spring Boot (Java)** und **Python FastAPI**.
 
@@ -39,5 +39,5 @@ Wir setzen **ASP.NET Core (C#)** als Technologie-Stack für den Booking Service 
 
 - Der Booking Service wird in **C# mit ASP.NET Core** (Minimal APIs) implementiert.
 - Als Datenbank wird **SQLite** mit **Entity Framework Core** verwendet.
-- Die Okta-Integration erfolgt zu einem späteren Zeitpunkt über `Microsoft.Identity.Web` und das offizielle Okta .NET SDK.
+- Authentifizierung im Prototyp: Basic Auth ohne Passwörter (ADR-003). Die Okta-Integration folgt vor dem Produktivbetrieb via `Microsoft.Identity.Web`.
 - Das Projekt liegt unter `backend/`.
