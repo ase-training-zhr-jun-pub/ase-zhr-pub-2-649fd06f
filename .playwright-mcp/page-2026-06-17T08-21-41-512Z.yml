@@ -1,0 +1,284 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e6]:
+        - generic [ref=e8]:
+          - generic [ref=e9]: C
+          - generic [ref=e10]:
+            - generic [ref=e11]: Calvin
+            - generic [ref=e12]: Raumbuchung
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link [ref=e397] [cursor=pointer]:
+              - /url: "#/"
+              - img [ref=e19]
+              - generic [ref=e24]: Dashboard
+          - listitem [ref=e25]:
+            - link [ref=e398] [cursor=pointer]:
+              - /url: "#/buchen"
+              - img [ref=e27]
+              - generic [ref=e29]: Raum buchen
+          - listitem [ref=e30]:
+            - link [ref=e399] [cursor=pointer]:
+              - /url: "#/buchungen"
+              - img [ref=e32]
+              - generic [ref=e35]: Meine Buchungen
+        - generic [ref=e37]:
+          - generic [ref=e39]: AB
+          - generic [ref=e40]:
+            - generic [ref=e41]: Alex Berger
+            - generic [ref=e42]: Senior Consultant
+      - main [ref=e43]:
+        - generic [ref=e44]:
+          - button [ref=e400]:
+            - img
+            - generic [ref=e46]: Toggle Sidebar
+          - separator [ref=e47]
+          - generic [ref=e48]:
+            - img [ref=e49]
+            - combobox [ref=e401]:
+              - generic [ref=e53]: Köln
+              - img: ▼
+            - textbox [ref=e54]: koeln
+        - main [ref=e55]:
+          - generic [ref=e153]:
+            - generic [ref=e154]:
+              - heading [level=1] [ref=e402]: Raum buchen
+              - paragraph [ref=e156]:
+                - img [ref=e157]
+                - text: Köln · Di, 23.06. · 09:00–10:00 Uhr
+            - generic [ref=e162]:
+              - generic [ref=e163]:
+                - generic [ref=e164]: Datum
+                - button [ref=e403]:
+                  - img
+                  - text: Di, 23. Juni 2026
+              - generic [ref=e166]:
+                - generic [ref=e167]: Von
+                - combobox [ref=e168]:
+                  - generic [ref=e169]: 09:00
+                  - img: ▼
+                - textbox [ref=e170]: 09:00
+              - generic [ref=e171]:
+                - generic [ref=e172]: Bis
+                - combobox [ref=e173]:
+                  - generic [ref=e174]: 10:00
+                  - img: ▼
+                - textbox [ref=e175]: 10:00
+            - generic [ref=e176]:
+              - complementary [ref=e177]:
+                - generic [ref=e178]:
+                  - img [ref=e179]
+                  - text: Filter
+                - generic [ref=e181]:
+                  - generic [ref=e182]: Mindestens Teilnehmer
+                  - spinbutton [ref=e404]: "1"
+                - separator [ref=e184]
+                - generic [ref=e185]:
+                  - generic [ref=e186]: Ausstattung
+                  - generic [ref=e187] [cursor=pointer]:
+                    - checkbox [ref=e405]
+                    - checkbox [ref=e189]
+                    - text: Bildschirm
+                  - generic [ref=e190] [cursor=pointer]:
+                    - checkbox [ref=e406]
+                    - checkbox [ref=e192]
+                    - text: Videokonferenz
+                  - generic [ref=e193] [cursor=pointer]:
+                    - checkbox [ref=e407]
+                    - checkbox [ref=e195]
+                    - text: Whiteboard
+                  - generic [ref=e196] [cursor=pointer]:
+                    - checkbox [ref=e408]
+                    - checkbox [ref=e198]
+                    - text: Flipchart
+                  - generic [ref=e199] [cursor=pointer]:
+                    - checkbox [ref=e409]
+                    - checkbox [ref=e201]
+                    - text: Telefonbox
+                  - generic [ref=e202] [cursor=pointer]:
+                    - checkbox [ref=e410]
+                    - checkbox [ref=e204]
+                    - text: Barrierefrei
+              - generic [ref=e205]:
+                - paragraph [ref=e207]: 2 von 5 Räumen im gewählten Zeitfenster frei
+                - generic [ref=e209]:
+                  - generic [ref=e210]:
+                    - generic [ref=e211]:
+                      - generic [ref=e212]:
+                        - heading [level=3] [ref=e411]: Telefonbox 1
+                        - generic [ref=e214]:
+                          - img
+                          - text: "1"
+                      - paragraph [ref=e215]: 2. OG · Schallisolierte Box für ungestörte Remote-Calls.
+                    - generic [ref=e216]:
+                      - img
+                      - text: Frei
+                  - generic [ref=e217]:
+                    - img [ref=e219]
+                    - img [ref=e222]
+                  - generic [ref=e229]:
+                    - generic [ref=e230]: "8"
+                    - generic [ref=e231]: "11"
+                    - generic [ref=e232]: "14"
+                    - generic [ref=e233]: "17"
+                    - generic [ref=e234]: 19 Uhr
+                  - generic [ref=e235]:
+                    - generic [ref=e237]:
+                      - img [ref=e238]
+                      - text: 09:00–10:00 Uhr verfügbar
+                    - button [ref=e413]: Buchen
+                - generic [ref=e243]:
+                  - generic [ref=e244]:
+                    - generic [ref=e245]:
+                      - generic [ref=e246]:
+                        - heading [level=3] [ref=e414]: Lovelace
+                        - generic [ref=e248]:
+                          - img
+                          - text: "4"
+                      - paragraph [ref=e249]: 2. OG · Heller Raum für fokussierte Vier-Augen-Gespräche.
+                    - generic [ref=e250]:
+                      - img
+                      - text: Frei
+                  - generic [ref=e251]:
+                    - img [ref=e253]
+                    - img [ref=e256]
+                  - generic [ref=e263]:
+                    - generic [ref=e264]: "8"
+                    - generic [ref=e265]: "11"
+                    - generic [ref=e266]: "14"
+                    - generic [ref=e267]: "17"
+                    - generic [ref=e268]: 19 Uhr
+                  - generic [ref=e269]:
+                    - generic [ref=e271]:
+                      - img [ref=e272]
+                      - text: 09:00–10:00 Uhr verfügbar
+                    - button [ref=e416]: Buchen
+                - generic [ref=e277]:
+                  - generic [ref=e278]:
+                    - generic [ref=e279]:
+                      - generic [ref=e280]:
+                        - heading [level=3] [ref=e417]: Turing
+                        - generic [ref=e282]:
+                          - img
+                          - text: "6"
+                      - paragraph [ref=e283]: 3. OG · Kompakter Besprechungsraum für Teammeetings.
+                    - generic [ref=e284]:
+                      - img
+                      - text: Belegt
+                  - generic [ref=e285]:
+                    - img [ref=e287]
+                    - img [ref=e290]
+                    - img [ref=e294]
+                  - generic [ref=e301]:
+                    - generic [ref=e302]: "8"
+                    - generic [ref=e303]: "11"
+                    - generic [ref=e304]: "14"
+                    - generic [ref=e305]: "17"
+                    - generic [ref=e306]: 19 Uhr
+                  - generic [ref=e307]:
+                    - generic [ref=e309]:
+                      - img [ref=e310]
+                      - text: "Belegt: 09:00–09:30 Uhr"
+                    - button [disabled]: Buchen
+                - generic [ref=e314]:
+                  - generic [ref=e315]:
+                    - generic [ref=e316]:
+                      - generic [ref=e317]:
+                        - heading [level=3] [ref=e420]: Hopper
+                        - generic [ref=e319]:
+                          - img
+                          - text: "8"
+                      - paragraph [ref=e320]: 2. OG · Barrierefreier Meetingraum mit großem Bildschirm.
+                    - generic [ref=e321]:
+                      - img
+                      - text: Belegt
+                  - generic [ref=e322]:
+                    - img [ref=e324]
+                    - img [ref=e327]
+                    - img [ref=e331]
+                    - img [ref=e334]
+                  - generic [ref=e344]:
+                    - generic [ref=e345]: "8"
+                    - generic [ref=e346]: "11"
+                    - generic [ref=e347]: "14"
+                    - generic [ref=e348]: "17"
+                    - generic [ref=e349]: 19 Uhr
+                  - generic [ref=e350]:
+                    - generic [ref=e352]:
+                      - img [ref=e353]
+                      - text: "Belegt: 09:00–17:00 Uhr"
+                    - button [disabled]: Buchen
+                - generic [ref=e357]:
+                  - generic [ref=e358]:
+                    - generic [ref=e359]:
+                      - generic [ref=e360]:
+                        - heading [level=3] [ref=e422]: Dijkstra
+                        - generic [ref=e362]:
+                          - img
+                          - text: "12"
+                      - paragraph [ref=e363]: 3. OG · Großer Workshop-Raum mit flexibler Bestuhlung, ideal für Kundenworkshops.
+                    - generic [ref=e364]:
+                      - img
+                      - text: Belegt
+                  - generic [ref=e365]:
+                    - img [ref=e367]
+                    - img [ref=e370]
+                    - img [ref=e374]
+                    - img [ref=e377]
+                  - generic [ref=e385]:
+                    - generic [ref=e386]: "8"
+                    - generic [ref=e387]: "11"
+                    - generic [ref=e388]: "14"
+                    - generic [ref=e389]: "17"
+                    - generic [ref=e390]: 19 Uhr
+                  - generic [ref=e391]:
+                    - generic [ref=e393]:
+                      - img [ref=e394]
+                      - text: "Belegt: 09:00–12:00 Uhr"
+                    - button [disabled]: Buchen
+    - region "Notifications alt+T"
+  - dialog "Raum buchen" [ref=e428]:
+    - generic [ref=e429]:
+      - heading "Raum buchen" [level=2] [ref=e430]:
+        - img [ref=e431]
+        - text: Raum buchen
+      - paragraph [ref=e434]: Prüfe die Details und bestätige deine Raumbuchung.
+    - generic [ref=e435]:
+      - generic [ref=e436]:
+        - generic [ref=e437]:
+          - generic [ref=e438]: Lovelace
+          - generic [ref=e439]:
+            - img
+            - text: bis 4 Pers.
+        - generic [ref=e440]:
+          - img [ref=e441]
+          - text: Köln · 2. OG
+        - generic [ref=e444]:
+          - img [ref=e445]
+          - text: Di, 23. Juni 2026 · 09:00–10:00 Uhr (1 h)
+        - generic [ref=e448]:
+          - generic [ref=e449]:
+            - img
+            - text: Bildschirm
+          - generic [ref=e450]:
+            - img
+            - text: Videokonferenz
+      - generic [ref=e451]:
+        - generic [ref=e452]:
+          - text: Meetingtitel
+          - generic [ref=e453]: "*"
+        - textbox "Meetingtitel *" [active] [ref=e454]:
+          - /placeholder: z. B. Kundenworkshop
+      - generic [ref=e455]:
+        - generic [ref=e456]: Buchungsnotiz (optional)
+        - textbox "Buchungsnotiz (optional)" [ref=e457]:
+          - /placeholder: z. B. Bestuhlung U-Form
+    - generic [ref=e458]:
+      - button "Abbrechen" [ref=e459]
+      - button "Verbindlich buchen" [ref=e460]:
+        - img
+        - text: Verbindlich buchen
+    - button "Close" [ref=e461]:
+      - img
+      - generic [ref=e462]: Close

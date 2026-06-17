@@ -1,0 +1,49 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: C
+        - generic [ref=e10]:
+          - generic [ref=e11]: Calvin
+          - generic [ref=e12]: Raumbuchung
+      - list [ref=e16]:
+        - listitem [ref=e17]:
+          - button "Dashboard" [ref=e18]:
+            - link "Dashboard" [ref=e19] [cursor=pointer]:
+              - /url: "#/"
+              - img [ref=e20]
+              - text: Dashboard
+        - listitem [ref=e25]:
+          - button "Raum buchen" [ref=e26]:
+            - link "Raum buchen" [ref=e27] [cursor=pointer]:
+              - /url: "#/buchen"
+              - img [ref=e28]
+              - text: Raum buchen
+        - listitem [ref=e30]:
+          - button "Meine Buchungen" [ref=e31]:
+            - link "Meine Buchungen" [ref=e32] [cursor=pointer]:
+              - /url: "#/buchungen"
+              - img [ref=e33]
+              - text: Meine Buchungen
+      - generic [ref=e37]:
+        - generic [ref=e39]: AB
+        - generic [ref=e40]:
+          - generic [ref=e41]: Alex Berger
+          - generic [ref=e42]: Senior Consultant
+    - main [ref=e43]:
+      - generic [ref=e44]:
+        - button "Toggle Sidebar" [ref=e45]:
+          - img
+          - generic [ref=e46]: Toggle Sidebar
+        - separator [ref=e47]
+        - generic [ref=e48]:
+          - img [ref=e49]
+          - combobox "Standort wählen" [ref=e52]:
+            - generic [ref=e53]: koeln
+            - img: ▼
+          - textbox [ref=e54]: koeln
+      - main [ref=e55]:
+        - generic [ref=e56]:
+          - heading "Dashboard" [level=1] [ref=e57]
+          - paragraph [ref=e58]: Platzhalter – wird in Phase 3 gefüllt.
+  - region "Notifications alt+T"

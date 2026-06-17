@@ -1,28 +1,32 @@
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { HashRouter, Route, Routes } from "react-router-dom"
+
+import { Layout } from "@/components/layout"
+import { StandortProvider } from "@/lib/standort-context"
+import { SucheProvider } from "@/lib/suche-context"
+import { BuchungenProvider } from "@/lib/buchungen-context"
+import { Toaster } from "@/components/ui/sonner"
+import { Dashboard } from "@/pages/Dashboard"
+import { Buchen } from "@/pages/Buchen"
+import { MeineBuchungen } from "@/pages/MeineBuchungen"
 
 function App() {
   return (
-    <div className="flex min-h-svh items-center justify-center bg-background p-8">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle>Calvin</CardTitle>
-          <CardDescription>INNOQ Raumbuchungssystem</CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4">
-          <p className="text-sm text-muted-foreground">
-            Du kannst jetzt mit dem Aufbau der UI
-            beginnen.
-          </p>
-        </CardContent>
-      </Card>
-    </div>
+    <BuchungenProvider>
+      <StandortProvider>
+        <SucheProvider>
+          <HashRouter>
+            <Routes>
+              <Route element={<Layout />}>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/buchen" element={<Buchen />} />
+                <Route path="/buchungen" element={<MeineBuchungen />} />
+              </Route>
+            </Routes>
+          </HashRouter>
+          <Toaster />
+        </SucheProvider>
+      </StandortProvider>
+    </BuchungenProvider>
   )
 }
 

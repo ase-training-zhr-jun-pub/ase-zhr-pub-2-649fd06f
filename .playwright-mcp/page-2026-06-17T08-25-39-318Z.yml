@@ -1,0 +1,124 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: C
+        - generic [ref=e10]:
+          - generic [ref=e11]: Calvin
+          - generic [ref=e12]: Raumbuchung
+      - list [ref=e16]:
+        - listitem [ref=e17]:
+          - link "Dashboard" [ref=e464] [cursor=pointer]:
+            - /url: "#/"
+            - img [ref=e19]
+            - generic [ref=e24]: Dashboard
+        - listitem [ref=e25]:
+          - link "Raum buchen" [ref=e465] [cursor=pointer]:
+            - /url: "#/buchen"
+            - img [ref=e27]
+            - generic [ref=e29]: Raum buchen
+        - listitem [ref=e30]:
+          - link "Meine Buchungen" [ref=e466] [cursor=pointer]:
+            - /url: "#/buchungen"
+            - img [ref=e32]
+            - generic [ref=e35]: Meine Buchungen
+      - generic [ref=e37]:
+        - generic [ref=e39]: AB
+        - generic [ref=e40]:
+          - generic [ref=e41]: Alex Berger
+          - generic [ref=e42]: Senior Consultant
+    - main [ref=e43]:
+      - generic [ref=e44]:
+        - button "Toggle Sidebar" [ref=e467]:
+          - img
+          - generic [ref=e46]: Toggle Sidebar
+        - separator [ref=e47]
+        - generic [ref=e48]:
+          - img [ref=e49]
+          - combobox "Standort wählen" [ref=e468]:
+            - generic [ref=e53]: Köln
+            - img: ▼
+          - textbox [ref=e54]: koeln
+      - main [ref=e55]:
+        - generic [ref=e955]:
+          - generic [ref=e956]:
+            - heading "Hallo Alex 👋" [level=1] [ref=e957]
+            - paragraph [ref=e958]:
+              - text: "Dein nächster Termin im Büro:"
+              - generic [ref=e959]: Dienstag, Di, 23.06.
+              - text: · Dijkstra
+          - generic [ref=e960]:
+            - generic [ref=e961]:
+              - generic [ref=e962]:
+                - generic [ref=e963]:
+                  - img [ref=e964]
+                  - text: Schnellbuchung
+                - generic [ref=e967]: Verfügbare Räume an deinem Standort finden und direkt buchen.
+              - generic [ref=e968]:
+                - generic [ref=e969]:
+                  - img [ref=e970]
+                  - generic [ref=e973]: "Standort:"
+                  - generic [ref=e974]: Köln
+                  - generic [ref=e975]: (oben rechts wechselbar)
+                - generic [ref=e976]:
+                  - generic [ref=e977]:
+                    - generic [ref=e978]: Datum
+                    - button "Di, 23. Juni 2026" [ref=e979]:
+                      - img
+                      - text: Di, 23. Juni 2026
+                  - generic [ref=e980]:
+                    - generic [ref=e981]: Von
+                    - combobox [ref=e982]:
+                      - generic [ref=e983]: 09:00
+                      - img: ▼
+                    - textbox [ref=e984]: 09:00
+                  - generic [ref=e985]:
+                    - generic [ref=e986]: Bis
+                    - combobox [ref=e987]:
+                      - generic [ref=e988]: 10:00
+                      - img: ▼
+                    - textbox [ref=e989]: 10:00
+                - button "Räume suchen" [ref=e990]:
+                  - text: Räume suchen
+                  - img
+            - generic [ref=e991]:
+              - generic [ref=e993]:
+                - img [ref=e994]
+                - text: Tipp
+              - generic [ref=e997]:
+                - paragraph [ref=e998]: Du bist meist remote und selten im Büro? Buche deinen Raum am besten 3–7 Tage im Voraus, damit dein Wunschraum sicher frei ist.
+                - paragraph [ref=e999]: Calvin blockiert gebuchte Räume automatisch – so kommt es nie zu Doppelbuchungen.
+          - generic [ref=e1000]:
+            - generic [ref=e1001]:
+              - heading "Deine nächsten Buchungen" [level=2] [ref=e1002]:
+                - img [ref=e1003]
+                - text: Deine nächsten Buchungen
+              - button "Alle ansehen" [ref=e1007] [cursor=pointer]:
+                - text: Alle ansehen
+                - img
+            - generic [ref=e1008]:
+              - generic [ref=e1010]:
+                - generic [ref=e1011]:
+                  - generic [ref=e1012]: Di
+                  - generic [ref=e1013]: "23"
+                - generic [ref=e1014]:
+                  - generic [ref=e1015]: Kundenworkshop Versicherungsplattform
+                  - generic [ref=e1016]: Dijkstra · Köln · 09:00–12:00 Uhr
+                - generic [ref=e1017]: 3 h
+              - generic [ref=e1019]:
+                - generic [ref=e1020]:
+                  - generic [ref=e1021]: Di
+                  - generic [ref=e1022]: "23"
+                - generic [ref=e1023]:
+                  - generic [ref=e1024]: Onboarding Gespräch mit Werkstudent
+                  - generic [ref=e1025]: Lovelace · Köln · 09:00–10:00 Uhr
+                - generic [ref=e1026]: 1 h
+              - generic [ref=e1028]:
+                - generic [ref=e1029]:
+                  - generic [ref=e1030]: Di
+                  - generic [ref=e1031]: "23"
+                - generic [ref=e1032]:
+                  - generic [ref=e1033]: Kunden-Call Statusupdate
+                  - generic [ref=e1034]: Telefonbox 1 · Köln · 14:00–14:30 Uhr
+                - generic [ref=e1035]: 30 min
+  - region "Notifications alt+T"

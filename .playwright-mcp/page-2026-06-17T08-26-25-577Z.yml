@@ -1,0 +1,211 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: C
+        - generic [ref=e10]:
+          - generic [ref=e11]: Calvin
+          - generic [ref=e12]: Raumbuchung
+      - list [ref=e16]:
+        - listitem [ref=e17]:
+          - link "Dashboard" [ref=e464] [cursor=pointer]:
+            - /url: "#/"
+            - img [ref=e19]
+            - generic [ref=e24]: Dashboard
+        - listitem [ref=e25]:
+          - link "Raum buchen" [ref=e465] [cursor=pointer]:
+            - /url: "#/buchen"
+            - img [ref=e27]
+            - generic [ref=e29]: Raum buchen
+        - listitem [ref=e30]:
+          - link "Meine Buchungen" [ref=e466] [cursor=pointer]:
+            - /url: "#/buchungen"
+            - img [ref=e32]
+            - generic [ref=e35]: Meine Buchungen
+      - generic [ref=e37]:
+        - generic [ref=e39]: AB
+        - generic [ref=e40]:
+          - generic [ref=e41]: Alex Berger
+          - generic [ref=e42]: Senior Consultant
+    - main [ref=e43]:
+      - generic [ref=e44]:
+        - button "Toggle Sidebar" [ref=e467]:
+          - img
+          - generic [ref=e46]: Toggle Sidebar
+        - separator [ref=e47]
+        - generic [ref=e48]:
+          - img [ref=e49]
+          - combobox "Standort wählen" [active] [ref=e468]:
+            - generic [ref=e53]: Berlin
+            - img: ▼
+          - textbox [ref=e54]: berlin
+      - main [ref=e55]:
+        - generic [ref=e1036]:
+          - generic [ref=e1037]:
+            - heading "Raum buchen" [level=1] [ref=e1038]
+            - paragraph [ref=e1039]:
+              - img [ref=e1040]
+              - text: Berlin · Di, 23.06. · 09:00–10:00 Uhr
+          - generic [ref=e1045]:
+            - generic [ref=e1046]:
+              - generic [ref=e1047]: Datum
+              - button "Di, 23. Juni 2026" [ref=e1048]:
+                - img
+                - text: Di, 23. Juni 2026
+            - generic [ref=e1049]:
+              - generic [ref=e1050]: Von
+              - combobox [ref=e1051]:
+                - generic [ref=e1052]: 09:00
+                - img: ▼
+              - textbox [ref=e1053]: 09:00
+            - generic [ref=e1054]:
+              - generic [ref=e1055]: Bis
+              - combobox [ref=e1056]:
+                - generic [ref=e1057]: 10:00
+                - img: ▼
+              - textbox [ref=e1058]: 10:00
+          - generic [ref=e1059]:
+            - complementary [ref=e1060]:
+              - generic [ref=e1061]:
+                - img [ref=e1062]
+                - text: Filter
+              - generic [ref=e1064]:
+                - generic [ref=e1065]: Mindestens Teilnehmer
+                - spinbutton "Mindestens Teilnehmer" [ref=e1066]: "1"
+              - separator [ref=e1067]
+              - generic [ref=e1068]:
+                - generic [ref=e1069]: Ausstattung
+                - generic [ref=e1070] [cursor=pointer]:
+                  - checkbox "Bildschirm" [ref=e1071]
+                  - checkbox [ref=e1072]
+                  - text: Bildschirm
+                - generic [ref=e1073] [cursor=pointer]:
+                  - checkbox "Videokonferenz" [ref=e1074]
+                  - checkbox [ref=e1075]
+                  - text: Videokonferenz
+                - generic [ref=e1076] [cursor=pointer]:
+                  - checkbox "Whiteboard" [ref=e1077]
+                  - checkbox [ref=e1078]
+                  - text: Whiteboard
+                - generic [ref=e1079] [cursor=pointer]:
+                  - checkbox "Flipchart" [ref=e1080]
+                  - checkbox [ref=e1081]
+                  - text: Flipchart
+                - generic [ref=e1082] [cursor=pointer]:
+                  - checkbox "Telefonbox" [ref=e1083]
+                  - checkbox [ref=e1084]
+                  - text: Telefonbox
+                - generic [ref=e1085] [cursor=pointer]:
+                  - checkbox "Barrierefrei" [ref=e1086]
+                  - checkbox [ref=e1087]
+                  - text: Barrierefrei
+            - generic [ref=e1088]:
+              - paragraph [ref=e1090]: 4 von 4 Räumen im gewählten Zeitfenster frei
+              - generic [ref=e1311]:
+                - generic [ref=e1312]:
+                  - generic [ref=e1313]:
+                    - generic [ref=e1314]:
+                      - heading "Telefonbox A" [level=3] [ref=e1315]
+                      - generic [ref=e1316]:
+                        - img
+                        - text: "1"
+                    - paragraph [ref=e1317]: 4. OG · Telefonbox direkt am Teambereich.
+                  - generic [ref=e1318]:
+                    - img
+                    - text: Frei
+                - generic [ref=e1319]:
+                  - img [ref=e1321]
+                  - img [ref=e1324]
+                - generic [ref=e1330]:
+                  - generic [ref=e1331]: "8"
+                  - generic [ref=e1332]: "11"
+                  - generic [ref=e1333]: "14"
+                  - generic [ref=e1334]: "17"
+                  - generic [ref=e1335]: 19 Uhr
+                - generic [ref=e1336]:
+                  - generic [ref=e1338]:
+                    - img [ref=e1339]
+                    - text: 09:00–10:00 Uhr verfügbar
+                  - button "Buchen" [ref=e1342]
+              - generic [ref=e1344]:
+                - generic [ref=e1345]:
+                  - generic [ref=e1346]:
+                    - generic [ref=e1347]:
+                      - heading "Knuth" [level=3] [ref=e1348]
+                      - generic [ref=e1349]:
+                        - img
+                        - text: "4"
+                    - paragraph [ref=e1350]: 3. OG · Ruhiger Raum für Reviews und Pairings.
+                  - generic [ref=e1351]:
+                    - img
+                    - text: Frei
+                - generic [ref=e1352]:
+                  - img [ref=e1354]
+                  - img [ref=e1357]
+                - generic [ref=e1363]:
+                  - generic [ref=e1364]: "8"
+                  - generic [ref=e1365]: "11"
+                  - generic [ref=e1366]: "14"
+                  - generic [ref=e1367]: "17"
+                  - generic [ref=e1368]: 19 Uhr
+                - generic [ref=e1369]:
+                  - generic [ref=e1371]:
+                    - img [ref=e1372]
+                    - text: 09:00–10:00 Uhr verfügbar
+                  - button "Buchen" [ref=e1375]
+              - generic [ref=e1377]:
+                - generic [ref=e1378]:
+                  - generic [ref=e1379]:
+                    - generic [ref=e1380]:
+                      - heading "von Neumann" [level=3] [ref=e1381]
+                      - generic [ref=e1382]:
+                        - img
+                        - text: "6"
+                    - paragraph [ref=e1383]: 4. OG · Besprechungsraum für agile Team-Sessions.
+                  - generic [ref=e1384]:
+                    - img
+                    - text: Frei
+                - generic [ref=e1385]:
+                  - img [ref=e1387]
+                  - img [ref=e1390]
+                  - img [ref=e1394]
+                - generic [ref=e1399]:
+                  - generic [ref=e1400]: "8"
+                  - generic [ref=e1401]: "11"
+                  - generic [ref=e1402]: "14"
+                  - generic [ref=e1403]: "17"
+                  - generic [ref=e1404]: 19 Uhr
+                - generic [ref=e1405]:
+                  - generic [ref=e1407]:
+                    - img [ref=e1408]
+                    - text: 09:00–10:00 Uhr verfügbar
+                  - button "Buchen" [ref=e1411]
+              - generic [ref=e1413]:
+                - generic [ref=e1414]:
+                  - generic [ref=e1415]:
+                    - generic [ref=e1416]:
+                      - heading "Zuse" [level=3] [ref=e1417]
+                      - generic [ref=e1418]:
+                        - img
+                        - text: "10"
+                    - paragraph [ref=e1419]: 4. OG · Großzügiger Konferenzraum mit Blick über Kreuzberg.
+                  - generic [ref=e1420]:
+                    - img
+                    - text: Frei
+                - generic [ref=e1421]:
+                  - img [ref=e1423]
+                  - img [ref=e1426]
+                  - img [ref=e1430]
+                  - img [ref=e1433]
+                - generic [ref=e1439]:
+                  - generic [ref=e1440]: "8"
+                  - generic [ref=e1441]: "11"
+                  - generic [ref=e1442]: "14"
+                  - generic [ref=e1443]: "17"
+                  - generic [ref=e1444]: 19 Uhr
+                - generic [ref=e1445]:
+                  - generic [ref=e1447]:
+                    - img [ref=e1448]
+                    - text: 09:00–10:00 Uhr verfügbar
+                  - button "Buchen" [ref=e1451]
+  - region "Notifications alt+T"

@@ -1,0 +1,158 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: C
+        - generic [ref=e10]:
+          - generic [ref=e11]: Calvin
+          - generic [ref=e12]: Raumbuchung
+      - list [ref=e16]:
+        - listitem [ref=e17]:
+          - link "Dashboard" [ref=e464] [cursor=pointer]:
+            - /url: "#/"
+            - img [ref=e19]
+            - generic [ref=e24]: Dashboard
+        - listitem [ref=e25]:
+          - link "Raum buchen" [ref=e465] [cursor=pointer]:
+            - /url: "#/buchen"
+            - img [ref=e27]
+            - generic [ref=e29]: Raum buchen
+        - listitem [ref=e30]:
+          - link "Meine Buchungen" [ref=e466] [cursor=pointer]:
+            - /url: "#/buchungen"
+            - img [ref=e32]
+            - generic [ref=e35]: Meine Buchungen
+      - generic [ref=e37]:
+        - generic [ref=e39]: AB
+        - generic [ref=e40]:
+          - generic [ref=e41]: Alex Berger
+          - generic [ref=e42]: Senior Consultant
+    - main [ref=e43]:
+      - generic [ref=e44]:
+        - button "Toggle Sidebar" [ref=e467]:
+          - img
+          - generic [ref=e46]: Toggle Sidebar
+        - separator [ref=e47]
+        - generic [ref=e48]:
+          - img [ref=e49]
+          - combobox "Standort wählen" [ref=e468]:
+            - generic [ref=e53]: Köln
+            - img: ▼
+          - textbox [ref=e54]: koeln
+      - main [ref=e55]:
+        - generic [ref=e503]:
+          - generic [ref=e504]:
+            - heading "Meine Buchungen" [level=1] [ref=e505]
+            - paragraph [ref=e506]: Übersicht deiner Raumbuchungen an allen Standorten.
+          - generic [ref=e507]:
+            - tablist [ref=e508]:
+              - tab "Anstehend 4" [selected] [ref=e509]:
+                - text: Anstehend
+                - generic [ref=e510]: "4"
+              - tab "Vergangen 1" [ref=e511]:
+                - text: Vergangen
+                - generic [ref=e512]: "1"
+            - tabpanel "Anstehend 4" [ref=e513]:
+              - generic [ref=e515]:
+                - generic [ref=e516]:
+                  - generic [ref=e517]: Di
+                  - generic [ref=e518]: "23"
+                  - generic [ref=e519]: Juni
+                - generic [ref=e520]:
+                  - generic [ref=e521]: Kundenworkshop Versicherungsplattform
+                  - generic [ref=e522]:
+                    - generic [ref=e523]:
+                      - img [ref=e524]
+                      - text: Dijkstra · Köln
+                    - generic [ref=e527]:
+                      - img [ref=e528]
+                      - text: 09:00–12:00 Uhr (3 h)
+                    - generic [ref=e531]:
+                      - img [ref=e532]
+                      - text: bis 12 Pers.
+                  - generic [ref=e537]:
+                    - img [ref=e538]
+                    - text: Bitte Bestuhlung U-Form, Catering ist bestellt.
+                - generic [ref=e541]:
+                  - button "Teilen" [ref=e542]:
+                    - img
+                    - text: Teilen
+                  - button "Stornieren" [ref=e543]:
+                    - img
+                    - text: Stornieren
+              - generic [ref=e545]:
+                - generic [ref=e546]:
+                  - generic [ref=e547]: Di
+                  - generic [ref=e548]: "23"
+                  - generic [ref=e549]: Juni
+                - generic [ref=e550]:
+                  - generic [ref=e551]: Onboarding Gespräch mit Werkstudent
+                  - generic [ref=e552]:
+                    - generic [ref=e553]:
+                      - img [ref=e554]
+                      - text: Lovelace · Köln
+                    - generic [ref=e557]:
+                      - img [ref=e558]
+                      - text: 09:00–10:00 Uhr (1 h)
+                    - generic [ref=e561]:
+                      - img [ref=e562]
+                      - text: bis 4 Pers.
+                - generic [ref=e567]:
+                  - button "Teilen" [ref=e568]:
+                    - img
+                    - text: Teilen
+                  - button "Stornieren" [ref=e569]:
+                    - img
+                    - text: Stornieren
+              - generic [ref=e571]:
+                - generic [ref=e572]:
+                  - generic [ref=e573]: Di
+                  - generic [ref=e574]: "23"
+                  - generic [ref=e575]: Juni
+                - generic [ref=e576]:
+                  - generic [ref=e577]: Kunden-Call Statusupdate
+                  - generic [ref=e578]:
+                    - generic [ref=e579]:
+                      - img [ref=e580]
+                      - text: Telefonbox 1 · Köln
+                    - generic [ref=e583]:
+                      - img [ref=e584]
+                      - text: 14:00–14:30 Uhr (30 min)
+                    - generic [ref=e587]:
+                      - img [ref=e588]
+                      - text: bis 1 Pers.
+                - generic [ref=e593]:
+                  - button "Teilen" [ref=e594]:
+                    - img
+                    - text: Teilen
+                  - button "Stornieren" [ref=e595]:
+                    - img
+                    - text: Stornieren
+              - generic [ref=e597]:
+                - generic [ref=e598]:
+                  - generic [ref=e599]: Di
+                  - generic [ref=e600]: "30"
+                  - generic [ref=e601]: Juni
+                - generic [ref=e602]:
+                  - generic [ref=e603]: Team-Retro Projekt Phoenix
+                  - generic [ref=e604]:
+                    - generic [ref=e605]:
+                      - img [ref=e606]
+                      - text: Turing · Köln
+                    - generic [ref=e609]:
+                      - img [ref=e610]
+                      - text: 10:00–11:30 Uhr (1,5 h)
+                    - generic [ref=e613]:
+                      - img [ref=e614]
+                      - text: bis 6 Pers.
+                  - generic [ref=e619]:
+                    - img [ref=e620]
+                    - text: Whiteboard für Retro-Board freihalten.
+                - generic [ref=e623]:
+                  - button "Teilen" [ref=e624]:
+                    - img
+                    - text: Teilen
+                  - button "Stornieren" [ref=e625]:
+                    - img
+                    - text: Stornieren
+  - region "Notifications alt+T"
