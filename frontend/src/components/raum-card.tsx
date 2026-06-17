@@ -64,9 +64,10 @@ function BelegungsLeiste({ raumId }: { raumId: string }) {
 interface RaumCardProps {
   raum: Raum
   onBuchen: (raum: Raum) => void
+  isSelected?: boolean
 }
 
-export function RaumCard({ raum, onBuchen }: RaumCardProps) {
+export function RaumCard({ raum, onBuchen, isSelected }: RaumCardProps) {
   const { datum, von, bis } = useSuche()
   const { istVerfuegbar, belegungen } = useBuchungen()
   const frei = istVerfuegbar(raum.id, datum, von, bis)
@@ -75,7 +76,7 @@ export function RaumCard({ raum, onBuchen }: RaumCardProps) {
   )
 
   return (
-    <Card className={cn(!frei && "opacity-90")}>
+    <Card className={cn(!frei && "opacity-90", isSelected && "ring-2 ring-primary bg-primary/5")}>
       <CardContent className="space-y-3 py-4">
         <div className="flex items-start justify-between gap-3">
           <div>

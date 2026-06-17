@@ -34,6 +34,7 @@ export function Buchen() {
   )
   const [dialogRaum, setDialogRaum] = useState<Raum | null>(null)
   const [dialogOpen, setDialogOpen] = useState(false)
+  const [ausgewaehlterRaumId, setAusgewaehlterRaumId] = useState<string | null>(null)
 
   const standort = standortById(standortId)
 
@@ -60,7 +61,13 @@ export function Buchen() {
 
   const handleBuchen = (raum: Raum) => {
     setDialogRaum(raum)
+    setAusgewaehlterRaumId(raum.id)
     setDialogOpen(true)
+  }
+
+  const handleDialogOpenChange = (open: boolean) => {
+    setDialogOpen(open)
+    if (!open) setAusgewaehlterRaumId(null)
   }
 
   const filterAktiv = minKapazitaet > 1 || filterAusstattung.size > 0
@@ -158,7 +165,7 @@ export function Buchen() {
             </Card>
           ) : (
             gefiltert.map((raum) => (
-              <RaumCard key={raum.id} raum={raum} onBuchen={handleBuchen} />
+              <RaumCard key={raum.id} raum={raum} onBuchen={handleBuchen} isSelected={ausgewaehlterRaumId === raum.id} />
             ))
           )}
         </div>
@@ -167,7 +174,7 @@ export function Buchen() {
       <BuchungDialog
         raum={dialogRaum}
         open={dialogOpen}
-        onOpenChange={setDialogOpen}
+        onOpenChange={handleDialogOpenChange}
       />
     </div>
   )
