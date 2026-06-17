@@ -21,6 +21,9 @@ export default defineConfig({
     host: "0.0.0.0",
     // Hinter dem Trainings-Proxy wechselt der Host pro Session — alle erlauben.
     allowedHosts: true,
+    proxy: {
+      "/api": "http://localhost:5000",
+    },
   },
   // Production-Build via `vite preview` ausliefern (funktioniert hinter dem
   // strippenden Proxy, da der Build relative Asset-Pfade erzeugt).

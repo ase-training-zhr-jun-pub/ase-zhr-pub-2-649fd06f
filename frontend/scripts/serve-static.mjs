@@ -9,13 +9,17 @@
 // `vite preview` ist hier ungeeignet, weil es `base` erneut anwendet und damit
 // nicht am Root ausliefern würde.
 
-import { createServer } from "node:http"
+import { createServer, request as httpRequest } from "node:http"
 import { readFile, stat } from "node:fs/promises"
 import { extname, join, normalize } from "node:path"
 import { fileURLToPath } from "node:url"
 
 const DIST = join(fileURLToPath(new URL(".", import.meta.url)), "..", "dist")
 const PORT = Number(process.env.PORT) || 5173
+// Backend (Booking Service). API-Requests werden hierhin weitergeleitet, damit
+// das Frontend relativ (`fetch("api/hello")`) anfragen kann und kein Port
+// öffentlich gestellt oder CORS konfiguriert werden muss.
+const API_TARGET = process.env.API_TARGET || "http://localhost:5000"
 
 const MIME = {
   ".html": "text/html; charset=utf-8",
@@ -40,6 +44,29 @@ const server = createServer(async (req, res) => {
       /^.*\/proxy\/\d+\//,
       "/",
     )
+
+    // API-Requests an den Booking Service weiterleiten (Reverse Proxy).
+    if (pathname.startsWith("/api/")) {
+      const target = new URL(API_TARGET)
+      const proxyReq = httpRequest(
+        {
+          hostname: target.hostname,
+          port: target.port,
+          path: pathname + url.search,
+          method: req.method,
+          headers: { ...req.headers, host: target.host },
+        },
+        (proxyRes) => {
+          res.writeHead(proxyRes.statusCode || 502, proxyRes.headers)
+          proxyRes.pipe(res)
+        },
+      )
+      proxyReq.on("error", (err) => {
+        res.writeHead(502).end(`Bad Gateway: ${err.message}`)
+      })
+      req.pipe(proxyReq)
+      return
+    }
     // Pfad relativ auflösen und Directory-Traversal verhindern.
     let rel = pathname.replace(/^\/+/, "")
     if (rel === "") rel = "index.html"

@@ -1,0 +1,6 @@
+@CalvinBookingService_HostAddress = http://localhost:5238
+
+GET {{CalvinBookingService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

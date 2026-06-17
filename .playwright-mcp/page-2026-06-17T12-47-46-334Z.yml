@@ -1,0 +1,127 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: C
+        - generic [ref=e10]:
+          - generic [ref=e11]: Calvin
+          - generic [ref=e12]: Raumbuchung
+      - list [ref=e16]:
+        - listitem [ref=e17]:
+          - link "Dashboard" [ref=e18] [cursor=pointer]:
+            - /url: "#/"
+            - img [ref=e19]
+            - generic [ref=e24]: Dashboard
+        - listitem [ref=e25]:
+          - link "Raum buchen" [ref=e26] [cursor=pointer]:
+            - /url: "#/buchen"
+            - img [ref=e27]
+            - generic [ref=e29]: Raum buchen
+        - listitem [ref=e30]:
+          - link "Meine Buchungen" [ref=e31] [cursor=pointer]:
+            - /url: "#/buchungen"
+            - img [ref=e32]
+            - generic [ref=e35]: Meine Buchungen
+      - generic [ref=e37]:
+        - generic [ref=e39]: AB
+        - generic [ref=e40]:
+          - generic [ref=e41]: Alex Berger
+          - generic [ref=e42]: Senior Consultant
+    - main [ref=e43]:
+      - generic [ref=e44]:
+        - button "Toggle Sidebar" [ref=e45]:
+          - img
+          - generic [ref=e46]: Toggle Sidebar
+        - separator [ref=e47]
+        - generic [ref=e48]:
+          - img [ref=e49]
+          - combobox "Standort wählen" [ref=e52]:
+            - generic [ref=e53]: Köln
+            - img: ▼
+          - textbox [ref=e54]: koeln
+      - main [ref=e55]:
+        - generic [ref=e56]:
+          - generic [ref=e57]:
+            - img [ref=e58]
+            - text: Verbindung zum Backend wird geprüft…
+          - generic [ref=e60]:
+            - heading "Hallo Alex 👋" [level=1] [ref=e61]
+            - paragraph [ref=e62]:
+              - text: "Dein nächster Termin im Büro:"
+              - generic [ref=e63]: Dienstag, Di, 23.06.
+              - text: · Dijkstra
+          - generic [ref=e64]:
+            - generic [ref=e65]:
+              - generic [ref=e66]:
+                - generic [ref=e67]:
+                  - img [ref=e68]
+                  - text: Schnellbuchung
+                - generic [ref=e71]: Verfügbare Räume an deinem Standort finden und direkt buchen.
+              - generic [ref=e72]:
+                - generic [ref=e73]:
+                  - img [ref=e74]
+                  - generic [ref=e77]: "Standort:"
+                  - generic [ref=e78]: Köln
+                  - generic [ref=e79]: (oben rechts wechselbar)
+                - generic [ref=e80]:
+                  - generic [ref=e81]:
+                    - generic [ref=e82]: Datum
+                    - button "Di, 23. Juni 2026" [ref=e83]:
+                      - img
+                      - text: Di, 23. Juni 2026
+                  - generic [ref=e84]:
+                    - generic [ref=e85]: Von
+                    - combobox [ref=e86]:
+                      - generic [ref=e87]: 09:00
+                      - img: ▼
+                    - textbox [ref=e88]: 09:00
+                  - generic [ref=e89]:
+                    - generic [ref=e90]: Bis
+                    - combobox [ref=e91]:
+                      - generic [ref=e92]: 10:00
+                      - img: ▼
+                    - textbox [ref=e93]: 10:00
+                - button "Räume suchen" [ref=e94]:
+                  - text: Räume suchen
+                  - img
+            - generic [ref=e95]:
+              - generic [ref=e97]:
+                - img [ref=e98]
+                - text: Tipp
+              - generic [ref=e101]:
+                - paragraph [ref=e102]: Du bist meist remote und selten im Büro? Buche deinen Raum am besten 3–7 Tage im Voraus, damit dein Wunschraum sicher frei ist.
+                - paragraph [ref=e103]: Calvin blockiert gebuchte Räume automatisch – so kommt es nie zu Doppelbuchungen.
+          - generic [ref=e104]:
+            - generic [ref=e105]:
+              - heading "Deine nächsten Buchungen" [level=2] [ref=e106]:
+                - img [ref=e107]
+                - text: Deine nächsten Buchungen
+              - button "Alle ansehen" [ref=e111] [cursor=pointer]:
+                - text: Alle ansehen
+                - img
+            - generic [ref=e112]:
+              - generic [ref=e114]:
+                - generic [ref=e115]:
+                  - generic [ref=e116]: Di
+                  - generic [ref=e117]: "23"
+                - generic [ref=e118]:
+                  - generic [ref=e119]: Kundenworkshop Versicherungsplattform
+                  - generic [ref=e120]: Dijkstra · Köln · 09:00–12:00 Uhr
+                - generic [ref=e121]: 3 h
+              - generic [ref=e123]:
+                - generic [ref=e124]:
+                  - generic [ref=e125]: Di
+                  - generic [ref=e126]: "23"
+                - generic [ref=e127]:
+                  - generic [ref=e128]: Kunden-Call Statusupdate
+                  - generic [ref=e129]: Telefonbox 1 · Köln · 14:00–14:30 Uhr
+                - generic [ref=e130]: 30 min
+              - generic [ref=e132]:
+                - generic [ref=e133]:
+                  - generic [ref=e134]: Di
+                  - generic [ref=e135]: "30"
+                - generic [ref=e136]:
+                  - generic [ref=e137]: Team-Retro Projekt Phoenix
+                  - generic [ref=e138]: Turing · Köln · 10:00–11:30 Uhr
+                - generic [ref=e139]: 1,5 h
+  - region "Notifications alt+T"

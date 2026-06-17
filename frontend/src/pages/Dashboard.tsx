@@ -2,6 +2,7 @@ import { ArrowRight, CalendarClock, MapPin, Search, Sparkles } from "lucide-reac
 import { Link, useNavigate } from "react-router-dom"
 
 import { Button } from "@/components/ui/button"
+import { BackendStatus } from "@/components/backend-status"
 import {
   Card,
   CardContent,
@@ -35,6 +36,7 @@ export function Dashboard() {
 
   return (
     <div className="mx-auto max-w-5xl space-y-6">
+      <BackendStatus />
       {/* Begrüßung */}
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">

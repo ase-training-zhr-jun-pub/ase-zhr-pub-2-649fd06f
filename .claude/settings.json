@@ -9,7 +9,19 @@
         "commit": "",
         "pr": ""
     },
-    "hooks": {},
+    "hooks": {
+        "PostToolUse": [
+            {
+                "matcher": "Write|Edit|MultiEdit",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/dotnet-format.sh"
+                    }
+                ]
+            }
+        ]
+    },
     "enableAllProjectMcpServers": true,
     "enabledMcpjsonServers": [
         "context7",
