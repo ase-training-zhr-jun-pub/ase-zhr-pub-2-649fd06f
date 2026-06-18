@@ -24,6 +24,63 @@ import { ZEITEN } from "@/components/suche-controls"
 import { cn } from "@/lib/utils"
 
 // ---------------------------------------------------------------------------
+// Hilfsfunktion: freie Alternativen zum gewünschten Zeitfenster finden (CLVN-012)
+// ---------------------------------------------------------------------------
+
+/**
+ * Sucht bis zu 3 freie [von, bis]-Paare mit gleicher Dauer wie das Wunsch-
+ * fenster, sortiert nach zeitlicher Nähe zum Wunschtermin.
+ */
+export function findeAlternativen(
+  raumId: string,
+  datum: string,
+  von: string,
+  bis: string,
+  belegungen: (raumId: string, datum: string) => Buchung[],
+): [string, string][] {
+  const toMin = (hhmm: string): number => {
+    const [h, m] = hhmm.split(":").map(Number)
+    return h * 60 + m
+  }
+  const toHHMM = (min: number): string => {
+    const h = String(Math.floor(min / 60)).padStart(2, "0")
+    const m = String(min % 60).padStart(2, "0")
+    return `${h}:${m}`
+  }
+
+  const dauer = toMin(bis) - toMin(von)
+  const wunschVon = toMin(von)
+  const belegt = belegungen(raumId, datum)
+
+  // Alle möglichen Startzeiten aus ZEITEN, bei denen das Endfenster noch in Bürozeiten liegt
+  const kandidaten: [string, string][] = ZEITEN.filter((start) => {
+    const startMin = toMin(start)
+    const endMin = startMin + dauer
+    const endStr = toHHMM(endMin)
+    return (
+      endMin <= 19 * 60 &&
+      endMin > startMin &&
+      (ZEITEN.includes(endStr) || endStr === "19:00")
+    )
+  }).map((start) => [start, toHHMM(toMin(start) + dauer)])
+
+  // Nur freie Slots (ohne den Wunschslot selbst)
+  const frei = kandidaten.filter(([kVon, kBis]) => {
+    if (kVon === von && kBis === bis) return false
+    return !belegt.some((b) => ueberlappt(kVon, kBis, b.von, b.bis))
+  })
+
+  // Sortieren nach Nähe zum Wunschtermin
+  frei.sort(([aVon], [bVon]) => {
+    const distA = Math.abs(toMin(aVon) - wunschVon)
+    const distB = Math.abs(toMin(bVon) - wunschVon)
+    return distA - distB
+  })
+
+  return frei.slice(0, 3)
+}
+
+// ---------------------------------------------------------------------------
 // Zeitslot-Raster Komponente (CLVN-011)
 // ---------------------------------------------------------------------------
 
@@ -129,13 +186,13 @@ export function BuchungDialog({
   onGebucht,
 }: BuchungDialogProps) {
   const { datum, von: sucheVon, bis: sucheBis } = useSuche()
-  const { addBuchung, belegungen } = useBuchungen()
+  const { addBuchung, belegungen, istVerfuegbar } = useBuchungen()
   const [schritt, setSchritt] = useState<1 | 2>(1)
   const [titel, setTitel] = useState("")
   const [notiz, setNotiz] = useState("")
   const [versucht, setVersucht] = useState(false)
 
-  // Lokaler Von/Bis-Zustand, damit Slotklicks im Raster den Dialog aktualisieren
+  // Lokaler Von/Bis-Zustand, damit Slotklicks und Alternativklicks den Dialog aktualisieren
   const [von, setVon] = useState(sucheVon)
   const [bis, setBis] = useState(sucheBis)
 
@@ -155,6 +212,10 @@ export function BuchungDialog({
   const titelFehlt = titel.trim() === ""
 
   const raumBelegungen = belegungen(raum.id, datum)
+  const slotVerfuegbar = istVerfuegbar(raum.id, datum, von, bis)
+  const alternativen = slotVerfuegbar
+    ? []
+    : findeAlternativen(raum.id, datum, von, bis, belegungen)
 
   const handleBuchen = async () => {
     setVersucht(true)
@@ -226,11 +287,48 @@ export function BuchungDialog({
               }}
             />
 
+            {/* CLVN-012: Alternativen bei belegtem Zeitfenster */}
+            {!slotVerfuegbar && alternativen.length > 0 && (
+              <div className="space-y-2 rounded-lg border border-destructive/30 bg-destructive/5 p-3">
+                <p className="text-xs font-semibold text-destructive">
+                  Das gewählte Zeitfenster ist belegt.
+                </p>
+                <p className="text-xs text-muted-foreground">Verfügbare Alternativen:</p>
+                <div className="flex flex-wrap gap-2">
+                  {alternativen.map(([altVon, altBis]) => (
+                    <Button
+                      key={`${altVon}-${altBis}`}
+                      variant="outline"
+                      size="sm"
+                      className="h-7 gap-1 text-xs"
+                      onClick={() => {
+                        setVon(altVon)
+                        setBis(altBis)
+                      }}
+                    >
+                      <Clock className="size-3" />
+                      {altVon}–{altBis} Uhr
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {!slotVerfuegbar && alternativen.length === 0 && (
+              <p className="text-xs text-destructive">
+                Das gewählte Zeitfenster ist belegt und es sind keine Alternativen verfügbar.
+              </p>
+            )}
+
             <DialogFooter>
               <Button variant="outline" onClick={() => onOpenChange(false)}>
                 Abbrechen
               </Button>
-              <Button onClick={() => setSchritt(2)} className="gap-2">
+              <Button
+                onClick={() => setSchritt(2)}
+                disabled={!slotVerfuegbar}
+                className="gap-2"
+              >
                 Weiter
                 <ArrowRight className="size-4" />
               </Button>
