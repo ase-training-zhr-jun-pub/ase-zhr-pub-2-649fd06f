@@ -63,6 +63,12 @@ pnpm-debug.log*
 # Storybook
 storybook-static/
 
+# .NET
+**/bin/
+**/obj/
+*.user
+*.suo
+
 # Playwright / Cypress
 /playwright-report/
 /playwright/.cache/
