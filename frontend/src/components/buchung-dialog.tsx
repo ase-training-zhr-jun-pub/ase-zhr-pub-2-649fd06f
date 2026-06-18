@@ -16,10 +16,104 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { AusstattungBadge } from "@/components/ausstattung-badges"
-import { standortById, type Raum } from "@/lib/mock-data"
+import { standortById, ueberlappt, type Buchung, type Raum } from "@/lib/mock-data"
 import { formatDatumLang, formatDauer } from "@/lib/format"
 import { useSuche } from "@/lib/suche-context"
 import { useBuchungen } from "@/lib/buchungen-context"
+import { ZEITEN } from "@/components/suche-controls"
+import { cn } from "@/lib/utils"
+
+// ---------------------------------------------------------------------------
+// Zeitslot-Raster Komponente (CLVN-011)
+// ---------------------------------------------------------------------------
+
+interface ZeitslotRasterProps {
+  raumId: string
+  datum: string
+  von: string
+  bis: string
+  belegungen: Buchung[]
+  onSlotKlick?: (von: string, bis: string) => void
+}
+
+function ZeitslotRaster({
+  datum: _datum,
+  von,
+  bis,
+  belegungen,
+  onSlotKlick,
+}: ZeitslotRasterProps) {
+  const toMin = (hhmm: string): number => {
+    const [h, m] = hhmm.split(":").map(Number)
+    return h * 60 + m
+  }
+
+  return (
+    <div className="space-y-1.5">
+      <p className="text-xs font-medium text-muted-foreground">Belegung am {_datum}</p>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(56px,1fr))] gap-1">
+        {ZEITEN.map((slotVon) => {
+          const slotVonMin = toMin(slotVon)
+          const slotBisMin = slotVonMin + 30
+          const slotBisH = String(Math.floor(slotBisMin / 60)).padStart(2, "0")
+          const slotBisM = String(slotBisMin % 60).padStart(2, "0")
+          const slotBis = `${slotBisH}:${slotBisM}`
+
+          const istBelegt = belegungen.some((b) =>
+            ueberlappt(slotVon, slotBis, b.von, b.bis),
+          )
+
+          const ausgewaehltVonMin = toMin(von)
+          const ausgewaehltBisMin = toMin(bis)
+          const istAusgewaehlt =
+            slotVonMin >= ausgewaehltVonMin && slotBisMin <= ausgewaehltBisMin
+
+          return (
+            <button
+              key={slotVon}
+              type="button"
+              disabled={istBelegt}
+              onClick={() => {
+                if (!istBelegt && onSlotKlick) {
+                  onSlotKlick(slotVon, slotBis)
+                }
+              }}
+              title={istBelegt ? `Belegt ${slotVon}–${slotBis}` : `Frei ${slotVon}–${slotBis}`}
+              className={cn(
+                "rounded px-1.5 py-1 text-[10px] font-medium leading-tight transition-colors",
+                istBelegt
+                  ? "cursor-not-allowed bg-[repeating-linear-gradient(45deg,hsl(var(--muted))_0px,hsl(var(--muted))_4px,hsl(var(--muted-foreground)/0.15)_4px,hsl(var(--muted-foreground)/0.15)_8px)] text-muted-foreground/50"
+                  : istAusgewaehlt
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted/60 text-foreground hover:bg-muted",
+              )}
+            >
+              {slotVon}
+            </button>
+          )
+        })}
+      </div>
+      <div className="flex gap-3 text-[10px] text-muted-foreground">
+        <span className="flex items-center gap-1">
+          <span className="inline-block size-2.5 rounded bg-muted/60" />
+          Frei
+        </span>
+        <span className="flex items-center gap-1">
+          <span className="inline-block size-2.5 rounded bg-[repeating-linear-gradient(45deg,hsl(var(--muted))_0px,hsl(var(--muted))_2px,hsl(var(--muted-foreground)/0.15)_2px,hsl(var(--muted-foreground)/0.15)_4px)]" />
+          Belegt
+        </span>
+        <span className="flex items-center gap-1">
+          <span className="inline-block size-2.5 rounded bg-primary" />
+          Ausgewählt
+        </span>
+      </div>
+    </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Dialog
+// ---------------------------------------------------------------------------
 
 interface BuchungDialogProps {
   raum: Raum | null
@@ -34,12 +128,16 @@ export function BuchungDialog({
   onOpenChange,
   onGebucht,
 }: BuchungDialogProps) {
-  const { datum, von, bis } = useSuche()
-  const { addBuchung } = useBuchungen()
+  const { datum, von: sucheVon, bis: sucheBis } = useSuche()
+  const { addBuchung, belegungen } = useBuchungen()
   const [schritt, setSchritt] = useState<1 | 2>(1)
   const [titel, setTitel] = useState("")
   const [notiz, setNotiz] = useState("")
   const [versucht, setVersucht] = useState(false)
+
+  // Lokaler Von/Bis-Zustand, damit Slotklicks im Raster den Dialog aktualisieren
+  const [von, setVon] = useState(sucheVon)
+  const [bis, setBis] = useState(sucheBis)
 
   useEffect(() => {
     if (open) {
@@ -47,12 +145,16 @@ export function BuchungDialog({
       setTitel("")
       setNotiz("")
       setVersucht(false)
+      setVon(sucheVon)
+      setBis(sucheBis)
     }
-  }, [open, raum?.id])
+  }, [open, raum?.id, sucheVon, sucheBis])
 
   if (!raum) return null
   const ort = standortById(raum.standortId)
   const titelFehlt = titel.trim() === ""
+
+  const raumBelegungen = belegungen(raum.id, datum)
 
   const handleBuchen = async () => {
     setVersucht(true)
@@ -110,6 +212,19 @@ export function BuchungDialog({
             </DialogHeader>
 
             {raumZusammenfassung}
+
+            {/* CLVN-011: Zeitslot-Raster */}
+            <ZeitslotRaster
+              raumId={raum.id}
+              datum={datum}
+              von={von}
+              bis={bis}
+              belegungen={raumBelegungen}
+              onSlotKlick={(slotVon, slotBis) => {
+                setVon(slotVon)
+                setBis(slotBis)
+              }}
+            />
 
             <DialogFooter>
               <Button variant="outline" onClick={() => onOpenChange(false)}>
