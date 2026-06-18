@@ -50,8 +50,11 @@ function BuchungCard({
   return (
     <Card className={vergangen ? "opacity-70" : undefined}>
       <CardContent className="flex flex-col gap-4 py-4 sm:flex-row sm:items-center">
-        {/* Datum */}
-        <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-lg bg-muted py-2">
+        {/* Datum — klickbar zur Detailseite */}
+        <Link
+          to={`/buchungen/${buchung.id}`}
+          className="flex w-16 shrink-0 flex-col items-center justify-center rounded-lg bg-muted py-2 hover:bg-muted/80 transition-colors"
+        >
           <span className="text-xs text-muted-foreground">
             {formatDatumKurz(buchung.datum).split(",")[0]}
           </span>
@@ -61,10 +64,10 @@ function BuchungCard({
           <span className="text-[10px] text-muted-foreground">
             {formatDatumLang(buchung.datum).split(" ")[2]}
           </span>
-        </div>
+        </Link>
 
-        {/* Inhalt */}
-        <div className="min-w-0 flex-1 space-y-1">
+        {/* Inhalt — klickbar zur Detailseite */}
+        <Link to={`/buchungen/${buchung.id}`} className="min-w-0 flex-1 space-y-1 hover:opacity-80 transition-opacity">
           <div className="font-medium">{buchung.titel}</div>
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
             <span className="flex items-center gap-1">
@@ -86,7 +89,7 @@ function BuchungCard({
               {buchung.notiz}
             </div>
           )}
-        </div>
+        </Link>
 
         {/* Aktionen */}
         <div className="flex shrink-0 items-center gap-2">

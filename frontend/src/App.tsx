@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { Dashboard } from "@/pages/Dashboard"
 import { Buchen } from "@/pages/Buchen"
 import { MeineBuchungen } from "@/pages/MeineBuchungen"
+import { BuchungDetail } from "@/pages/BuchungDetail"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/buchen" element={<Buchen />} />
                 <Route path="/buchungen" element={<MeineBuchungen />} />
+                <Route path="/buchungen/:id" element={<BuchungDetail />} />
               </Route>
             </Routes>
           </HashRouter>
