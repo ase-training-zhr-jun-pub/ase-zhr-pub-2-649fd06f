@@ -1,7 +1,8 @@
 import path from "path"
 import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import { defineConfig, type ViteDevServer } from "vite"
+import type { IncomingMessage, ServerResponse } from "node:http"
 
 export default defineConfig(() => {
   const proxyUri = process.env.VSCODE_PROXY_URI
@@ -20,8 +21,8 @@ export default defineConfig(() => {
       base !== "/"
         ? {
             name: "proxy-path-rewrite",
-            configureServer(server) {
-              server.middlewares.use((req, _res, next) => {
+            configureServer(server: ViteDevServer) {
+              server.middlewares.use((req: IncomingMessage, _res: ServerResponse, next: () => void) => {
                 // API-Pfade nicht umschreiben – die werden vom Vite-Proxy abgefangen.
                 if (req.url && !req.url.startsWith(base) && !req.url.startsWith("/api/")) {
                   req.url = base.replace(/\/$/, "") + req.url
@@ -34,7 +35,7 @@ export default defineConfig(() => {
     ].filter(Boolean),
     server: {
       host: "0.0.0.0",
-      allowedHosts: true,
+      allowedHosts: true as true,
       proxy: {
         "/api": "http://localhost:5000",
       },
@@ -42,7 +43,7 @@ export default defineConfig(() => {
     preview: {
       host: "0.0.0.0",
       port: 5173,
-      allowedHosts: true,
+      allowedHosts: true as true,
     },
     resolve: {
       alias: {

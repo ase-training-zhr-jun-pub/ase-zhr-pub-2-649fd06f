@@ -69,7 +69,8 @@ export function BuchungAendernDialog({
   const titelFehlt = titel.trim() === ""
   const bisOptionen = ZEITEN.filter((t) => t > von)
 
-  const handleVon = (neuVon: string) => {
+  const handleVon = (neuVon: string | null) => {
+    if (!neuVon) return
     setVon(neuVon)
     if (bis <= neuVon) {
       const idx = ZEITEN.indexOf(neuVon)
@@ -158,7 +159,7 @@ export function BuchungAendernDialog({
             </div>
             <div className="grid flex-1 gap-1.5">
               <Label htmlFor="ae-bis">Bis</Label>
-              <Select value={bis} onValueChange={setBis}>
+              <Select value={bis} onValueChange={(v) => v && setBis(v)}>
                 <SelectTrigger id="ae-bis">
                   <SelectValue />
                 </SelectTrigger>
