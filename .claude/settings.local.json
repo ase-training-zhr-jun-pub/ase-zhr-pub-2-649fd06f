@@ -54,7 +54,12 @@
       "Bash(curl -s http://localhost:5000/api/hello)",
       "Bash(curl -s http://localhost:5000/api/buchungen)",
       "Bash(curl -s -X POST http://localhost:5000/api/buchungen -H 'Content-Type: application/json' -d '{\"raumId\":\"koeln-dijkstra\",\"titel\":\"Test\",\"datum\":\"2026-06-25\",\"von\":\"09:00\",\"bis\":\"10:00\",\"nutzerId\":\"alex\"}')",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/api/buchungen)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/api/buchungen)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git remote *)",
+      "Bash(npx tsc *)"
     ]
   }
 }

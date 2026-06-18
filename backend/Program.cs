@@ -62,3 +62,5 @@ app.MapDelete("/api/buchungen/{id}", (string id, BuchungService service) =>
     service.Stornieren(id) ? Results.NoContent() : Results.NotFound());
 
 app.Run();
+
+public partial class Program { }
