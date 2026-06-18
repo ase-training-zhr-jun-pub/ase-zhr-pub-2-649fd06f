@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(echo \"gestartet, PID $!\")",
+      "Read(//tmp/**)",
+      "mcp__playwright__browser_navigate",
+      "Read(//opt/**)",
+      "Bash(npx playwright *)",
+      "Bash(mkdir -p /opt/playwright-browsers/test)",
+      "Bash(rmdir /opt/playwright-browsers/test)",
+      "Bash(sudo mkdir -p /opt/playwright-browsers/chromium-1208)",
+      "Bash(sudo cp -r /home/coder/.cache/ms-playwright/chromium-1228/chrome-linux64 /opt/playwright-browsers/chromium-1208/)",
+      "Bash(sudo chmod -R a+rx /opt/playwright-browsers/chromium-1208)",
+      "Bash(sudo npx playwright install-deps chromium)",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_console_messages",
+      "Bash(node -e \"const l=require\\('react-day-picker/locale'\\); console.log\\('de' in l ? 'de export ok' : Object.keys\\(l\\).slice\\(0,5\\)\\)\")",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_type",
+      "Bash(curl -s http://localhost:5173/)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(nohup npm run preview)",
+      "Bash(echo \"Preview gestartet, PID $!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{content_type}\\\\n\" http://localhost:5173/assets/index-1ea-sO2N.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(pkill -f \"vite preview\")",
+      "Bash(fuser -k 5173/tcp)",
+      "Bash(nohup npm run serve)",
+      "Bash(echo \"PID $!\")",
+      "Bash(curl -s -o /dev/null -w \"   %{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w \"   %{http_code} %{content_type}\\\\n\" http://localhost:5173/assets/index-BijV47_2.js)",
+      "Bash(curl -s -o /dev/null -w \"   %{http_code} %{content_type}\\\\n\" http://localhost:5173/assets/index-BD-fDVvV.css)",
+      "Bash(curl -s -o /dev/null -w \"   %{http_code} %{content_type}\\\\n\" \"http://localhost:5173/t/03d8e8236d6c7a37/s/649fd06fbd3f4b5d/proxy/5173/assets/index-BijV47_2.js\")",
+      "Bash(curl -s -o /dev/null -w \"  %{http_code} %{content_type}\\\\n\" \"http://localhost:5173/t/03d8e8236d6c7a37/s/649fd06fbd3f4b5d/proxy/5173/assets/index-BijV47_2.js\")",
+      "Bash(curl -s -o /dev/null -w \"  %{http_code} %{content_type}\\\\n\" \"http://localhost:5173/assets/index-BijV47_2.js\")",
+      "Bash(xargs -I{} sh -c 'echo \"=== {} ===\" && cat \"{}\"')"
+    ]
+  }
+}
