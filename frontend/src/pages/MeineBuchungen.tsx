@@ -135,9 +135,9 @@ export function MeineBuchungen() {
   const anstehend = sortiert.filter((b) => istZukunft(b.datum))
   const vergangen = sortiert.filter((b) => !istZukunft(b.datum)).reverse()
 
-  const bestaetigeStorno = () => {
+  const bestaetigeStorno = async () => {
     if (!stornoZiel) return
-    stornieren(stornoZiel.id)
+    await stornieren(stornoZiel.id)
     toast.success("Buchung storniert", {
       description: `${stornoZiel.titel} wurde storniert.`,
     })

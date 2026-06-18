@@ -36,7 +36,25 @@
       "Bash(curl -s -o /dev/null -w \"   %{http_code} %{content_type}\\\\n\" \"http://localhost:5173/t/03d8e8236d6c7a37/s/649fd06fbd3f4b5d/proxy/5173/assets/index-BijV47_2.js\")",
       "Bash(curl -s -o /dev/null -w \"  %{http_code} %{content_type}\\\\n\" \"http://localhost:5173/t/03d8e8236d6c7a37/s/649fd06fbd3f4b5d/proxy/5173/assets/index-BijV47_2.js\")",
       "Bash(curl -s -o /dev/null -w \"  %{http_code} %{content_type}\\\\n\" \"http://localhost:5173/assets/index-BijV47_2.js\")",
-      "Bash(xargs -I{} sh -c 'echo \"=== {} ===\" && cat \"{}\"')"
+      "Bash(xargs -I{} sh -c 'echo \"=== {} ===\" && cat \"{}\"')",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
+      "Bash(~/.dotnet/dotnet add *)",
+      "Bash(/home/coder/workspace/backend/bin/Debug/net9.0/CalvinBookingService --version)",
+      "Bash(env)",
+      "Bash(ls /snap/)",
+      "Bash(ls /nix/)",
+      "Bash(curl -fsSL https://dot.net/v1/dotnet-install.sh)",
+      "Bash(bash -s -- --channel 9.0 --install-dir /home/coder/.dotnet)",
+      "Bash(/home/coder/.dotnet/dotnet --version)",
+      "Bash(/home/coder/.dotnet/dotnet add *)",
+      "Bash(DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 /home/coder/.dotnet/dotnet *)",
+      "Bash(fuser -k 5000/tcp)",
+      "Bash(nohup sh -c 'DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 /home/coder/.dotnet/dotnet run --project /home/coder/workspace/backend --launch-profile http')",
+      "Bash(echo \"PID: $!\")",
+      "Bash(curl -s http://localhost:5000/api/hello)",
+      "Bash(curl -s http://localhost:5000/api/buchungen)",
+      "Bash(curl -s -X POST http://localhost:5000/api/buchungen -H 'Content-Type: application/json' -d '{\"raumId\":\"koeln-dijkstra\",\"titel\":\"Test\",\"datum\":\"2026-06-25\",\"von\":\"09:00\",\"bis\":\"10:00\",\"nutzerId\":\"alex\"}')",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/api/buchungen)"
     ]
   }
 }

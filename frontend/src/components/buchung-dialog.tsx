@@ -54,15 +54,19 @@ export function BuchungDialog({
   const ort = standortById(raum.standortId)
   const titelFehlt = titel.trim() === ""
 
-  const handleBuchen = () => {
+  const handleBuchen = async () => {
     setVersucht(true)
     if (titelFehlt) return
-    addBuchung({ raumId: raum.id, titel: titel.trim(), notiz: notiz.trim() || undefined, datum, von, bis })
-    onOpenChange(false)
-    toast.success("Raum gebucht", {
-      description: `${raum.name} · ${formatDatumLang(datum)} · ${von}–${bis} Uhr`,
-    })
-    onGebucht?.()
+    try {
+      await addBuchung({ raumId: raum.id, titel: titel.trim(), notiz: notiz.trim() || undefined, datum, von, bis })
+      onOpenChange(false)
+      toast.success("Raum gebucht", {
+        description: `${raum.name} · ${formatDatumLang(datum)} · ${von}–${bis} Uhr`,
+      })
+      onGebucht?.()
+    } catch (e) {
+      toast.error("Buchung fehlgeschlagen", { description: e instanceof Error ? e.message : undefined })
+    }
   }
 
   const raumZusammenfassung = (

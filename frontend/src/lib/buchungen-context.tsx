@@ -1,11 +1,14 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react"
-
 import {
-  aktuellerNutzer,
-  buchungen as initialeBuchungen,
-  ueberlappt,
-  type Buchung,
-} from "@/lib/mock-data"
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react"
+
+import { aktuellerNutzer, ueberlappt, type Buchung } from "@/lib/mock-data"
 
 export interface NeueBuchung {
   raumId: string
@@ -24,28 +27,33 @@ interface BuchungenContextValue {
   belegungen: (raumId: string, datum: string) => Buchung[]
   /** Ist der Raum am Datum im Zeitfenster frei? */
   istVerfuegbar: (raumId: string, datum: string, von: string, bis: string) => boolean
-  addBuchung: (b: NeueBuchung) => Buchung
-  stornieren: (id: string) => void
-  aendern: (id: string, patch: Partial<NeueBuchung>) => void
+  addBuchung: (b: NeueBuchung) => Promise<Buchung>
+  stornieren: (id: string) => Promise<void>
+  aendern: (id: string, patch: Partial<NeueBuchung>) => Promise<void>
 }
 
 const BuchungenContext = createContext<BuchungenContextValue | undefined>(undefined)
 
-let counter = 9000
-
 export function BuchungenProvider({ children }: { children: ReactNode }) {
-  const [buchungen, setBuchungen] = useState<Buchung[]>(initialeBuchungen)
+  const [buchungen, setBuchungen] = useState<Buchung[]>([])
 
-  const value = useMemo<BuchungenContextValue>(() => {
-    const belegungen = (raumId: string, datum: string) =>
+  useEffect(() => {
+    fetch("api/buchungen")
+      .then((r) => r.json())
+      .then((data: Buchung[]) => setBuchungen(data))
+      .catch(() => {/* Backend nicht erreichbar — leere Liste */})
+  }, [])
+
+  const belegungen = useCallback(
+    (raumId: string, datum: string) =>
       buchungen.filter(
-        (b) =>
-          b.raumId === raumId &&
-          b.datum === datum &&
-          b.status === "bestaetigt",
-      )
+        (b) => b.raumId === raumId && b.datum === datum && b.status === "bestaetigt",
+      ),
+    [buchungen],
+  )
 
-    return {
+  const value = useMemo<BuchungenContextValue>(
+    () => ({
       buchungen,
       eigene: buchungen.filter(
         (b) => b.nutzerId === aktuellerNutzer.id && b.status === "bestaetigt",
@@ -53,33 +61,50 @@ export function BuchungenProvider({ children }: { children: ReactNode }) {
       belegungen,
       istVerfuegbar: (raumId, datum, von, bis) =>
         !belegungen(raumId, datum).some((b) => ueberlappt(von, bis, b.von, b.bis)),
-      addBuchung: (b) => {
-        const neu: Buchung = {
-          id: `b-${++counter}`,
-          nutzerId: aktuellerNutzer.id,
-          status: "bestaetigt",
-          ...b,
+
+      addBuchung: async (b) => {
+        const res = await fetch("api/buchungen", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...b, nutzerId: aktuellerNutzer.id }),
+        })
+        if (!res.ok) {
+          const body = await res.json().catch(() => ({}))
+          throw new Error(body.fehler ?? "Buchung fehlgeschlagen.")
         }
+        const neu: Buchung = await res.json()
         setBuchungen((prev) => [...prev, neu])
         return neu
       },
-      stornieren: (id) =>
+
+      stornieren: async (id) => {
+        await fetch(`api/buchungen/${id}`, { method: "DELETE" })
         setBuchungen((prev) =>
-          prev.map((b) =>
-            b.id === id ? { ...b, status: "storniert" } : b,
-          ),
-        ),
-      aendern: (id, patch) =>
+          prev.map((b) => (b.id === id ? { ...b, status: "storniert" } : b)),
+        )
+      },
+
+      aendern: async (id, patch) => {
+        const res = await fetch(`api/buchungen/${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(patch),
+        })
+        if (!res.ok) {
+          const body = await res.json().catch(() => ({}))
+          throw new Error(body.fehler ?? "Änderung fehlgeschlagen.")
+        }
+        const aktualisiert: Buchung = await res.json()
         setBuchungen((prev) =>
-          prev.map((b) => (b.id === id ? { ...b, ...patch } : b)),
-        ),
-    }
-  }, [buchungen])
+          prev.map((b) => (b.id === id ? aktualisiert : b)),
+        )
+      },
+    }),
+    [buchungen, belegungen],
+  )
 
   return (
-    <BuchungenContext.Provider value={value}>
-      {children}
-    </BuchungenContext.Provider>
+    <BuchungenContext.Provider value={value}>{children}</BuchungenContext.Provider>
   )
 }
 
