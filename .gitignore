@@ -63,6 +63,9 @@ pnpm-debug.log*
 # Storybook
 storybook-static/
 
+# Claude Code
+.claude/worktrees/
+
 # .NET
 **/bin/
 **/obj/
